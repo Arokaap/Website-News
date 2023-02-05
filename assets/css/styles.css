@@ -173,3 +173,7 @@ img {
 .card img {
   min-height: 200px;
 }
+
+.buscador {
+  margin-left: 20rem;
+}

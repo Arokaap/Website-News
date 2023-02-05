@@ -2,21 +2,22 @@
 const d = document;
 const ApiKey = "814d63c7c89c40f19d0e4f2f87ebe2de";
 const $fragment = d.createDocumentFragment();
+const $divRow = d.querySelector(".row");
 let repetir = true;
 
 export default function newsRequest(url) {
   const $container = d.getElementById("container-news"),
     $fragment = d.createDocumentFragment();
 
-  async function getData() {
+  async function getData(infor = "Noticias") {
     try {
       let resultado = await fetch(
-        "https://newsapi.org/v2/top-headlines?from=2023-01-05&sortBy=publishedAt&language=es&apiKey=814d63c7c89c40f19d0e4f2f87ebe2de"
-      );
+          `https://newsapi.org/v2/everything?q=${infor}&language=es&apiKey=814d63c7c89c40f19d0e4f2f87ebe2de`
+        ),
+        json = await resultado.json();
 
-      let json = await resultado.json();
-
-      const $divRow = d.querySelector(".row");
+      if (!resultado.ok)
+        throw { status: resultado.status, statusText: resultado.statusText };
 
       json["articles"].forEach((element) => {
         //Div para tamanio bootstrap
@@ -90,9 +91,10 @@ export default function newsRequest(url) {
         }
       }
     } catch (err) {
-      console.log(err);
+      let message = err.statusText || "Ocurrió un error";
+      $divRow.innerHTML = `Error ${err.statusText}: ${message}`;
     }
   }
 
-  getData();
+  getData(url);
 }
