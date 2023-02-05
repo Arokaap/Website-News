@@ -26,6 +26,7 @@ html {
 }
 
 body {
+  background-color: rgb(238, 236, 236);
   margin: 0;
   overflow-x: hidden;
 }
@@ -43,6 +44,7 @@ img {
   padding: 1rem;
   background-color: var(--main-color);
   color: var(--third-modal-color);
+  z-index: 997;
 }
 
 .header h1 {
@@ -157,11 +159,17 @@ img {
 /* Contenido central de la página */
 #seccion1 h1 {
   font-size: 50px;
-  color: gray;
+  color: rgb(104, 103, 103);
   margin-bottom: 3rem;
 }
 
 .card {
-  z-index: -1;
+  z-index: 995;
   width: 18rem;
+  margin-top: 5rem;
+  max-width: 18rem;
+}
+
+.card img {
+  min-height: 200px;
 }
