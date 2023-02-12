@@ -3,9 +3,9 @@ const d = document;
 const ApiKey = "814d63c7c89c40f19d0e4f2f87ebe2de";
 const $fragment = d.createDocumentFragment();
 const $divRow = d.querySelector(".row");
-let repetir = true;
 
 export default function newsRequest(url) {
+  let repetir = true;
   const $container = d.getElementById("container-news"),
     $fragment = d.createDocumentFragment();
 
